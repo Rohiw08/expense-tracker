@@ -53,9 +53,4 @@ class ExpenseItem extends StatelessWidget {
       ),
     );
   }
-
-  IconData _getIconForCategory(String category) {
-    // You can customize this method to return different icons for each category.
-    return Icons.work;
-  }
 }
