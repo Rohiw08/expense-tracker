@@ -18,7 +18,7 @@ class ExpenseItem extends StatelessWidget {
           leading: CircleAvatar(
             backgroundColor: Theme.of(context).primaryColor,
             child: Icon(
-              categoryIcons[expense.category],
+              ItemCategoryIcons[expense.category],
               color: Colors.white,
             ),
           ),
