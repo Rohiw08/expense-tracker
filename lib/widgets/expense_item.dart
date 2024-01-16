@@ -27,7 +27,7 @@ class ExpenseItem extends StatelessWidget {
             style: Theme.of(context).textTheme.titleLarge,
           ),
           subtitle: Text(
-            'Category: ${expense.category}',
+            'Category: ${(expense.category).toString().substring(13)}',
             style: Theme.of(context).textTheme.bodySmall,
           ),
           trailing: Column(
@@ -35,7 +35,7 @@ class ExpenseItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
-                '\$${expense.amount.toString()}',
+                '₹${expense.amount.toString()}',
                 style: GoogleFonts.varelaRound(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,

@@ -4,7 +4,7 @@ import 'package:expensetracker/models/expense.dart';
 import 'package:flutter/material.dart';
 
 class NewExpense extends StatefulWidget {
-  NewExpense({
+  const NewExpense({
     required this.addExpense,
     super.key,
   });
@@ -133,9 +133,9 @@ class _NewExpenseState extends State<NewExpense> {
                       ),
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
+                          // backgroundColor: Colors.white,
                           foregroundColor: Colors.black,
-
+                          shape: const BeveledRectangleBorder(),
                           padding:
                               const EdgeInsets.all(16), // Increase button size
                         ),
@@ -155,10 +155,10 @@ class _NewExpenseState extends State<NewExpense> {
                   Expanded(
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 7),
+                          horizontal: 17, vertical: 7),
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4),
-                        border: Border.all(color: Colors.black),
+                        borderRadius: BorderRadius.circular(3),
+                        border: Border.all(),
                       ),
                       child: DropdownButton(
                         iconSize: 30,
@@ -189,11 +189,14 @@ class _NewExpenseState extends State<NewExpense> {
                 ],
               ),
               const SizedBox(
-                height: 20,
+                height: 50,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.black, fixedSize: Size(150, 50)),
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
+                  fixedSize: const Size(150, 50),
+                ),
                 onPressed: _submitSelectedData,
                 child: const Text('Save Expese'),
               ),

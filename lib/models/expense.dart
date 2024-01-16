@@ -5,6 +5,7 @@ const uuid = Uuid();
 
 enum ItemCategory { food, travel, leisure, work }
 
+// ignore: constant_identifier_names
 const ItemCategoryIcons = {
   ItemCategory.food: Icons.lunch_dining,
   ItemCategory.travel: Icons.flight_takeoff,

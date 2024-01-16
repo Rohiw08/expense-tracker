@@ -1,6 +1,4 @@
 import 'package:expensetracker/models/expense.dart';
-import 'package:expensetracker/widgets/add_button.dart';
-import 'package:expensetracker/widgets/back_button.dart';
 import 'package:expensetracker/widgets/expenses_list.dart';
 import 'package:expensetracker/screens/new_expense.dart';
 import 'package:expensetracker/widgets/title_text.dart';
@@ -16,10 +14,35 @@ class Expenses extends StatefulWidget {
 class _ExpensesState extends State<Expenses> {
   final List<Expense> _registeredExpenses = [];
 
+  Widget mainContent = const Center(
+    child: Text('No expense found. Start Adding some'),
+  );
+
   void _addExpense(Expense expense) {
     setState(() {
       _registeredExpenses.add(expense);
     });
+  }
+
+  void _removeExpense(Expense expense) {
+    final expenseIndex = _registeredExpenses.indexOf(expense);
+    setState(() {
+      _registeredExpenses.remove(expense);
+    });
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        duration: const Duration(seconds: 3),
+        content: const Text('Expense deleted'),
+        action: SnackBarAction(
+          label: 'Undo',
+          onPressed: () {
+            setState(() {
+              _registeredExpenses.insert(expenseIndex, expense);
+            });
+          },
+        ),
+      ),
+    );
   }
 
   void onAddButtonPressed() {
@@ -37,13 +60,20 @@ class _ExpensesState extends State<Expenses> {
 
   @override
   Widget build(BuildContext context) {
+    if (_registeredExpenses.isNotEmpty) {
+      mainContent = ExpensesList(
+        expenses: _registeredExpenses,
+        removeFunction: _removeExpense,
+      );
+    }
+
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(100),
           child: AppBar(
             toolbarHeight: 100,
-            leading: const CustomBackButton(),
+            // leading: const CustomBackButton(),
             title: const AppBarTitle(appbarTitleText: 'Activity'),
             centerTitle: true,
             elevation: 0,
@@ -54,15 +84,16 @@ class _ExpensesState extends State<Expenses> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-              child: ExpensesList(
-                expenses: _registeredExpenses,
-              ),
+              child: mainContent,
             ),
           ],
         ),
-        bottomNavigationBar: GestureDetector(
-          onTap: onAddButtonPressed,
-          child: const AddButton(),
+        floatingActionButton: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: FloatingActionButton(
+            onPressed: onAddButtonPressed,
+            child: const Icon(Icons.add),
+          ),
         ),
       ),
     );

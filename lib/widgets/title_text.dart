@@ -7,6 +7,7 @@ class AppBarTitle extends StatelessWidget {
     super.key,
   });
 
+  // ignore: prefer_typing_uninitialized_variables
   final appbarTitleText;
 
   @override
