@@ -7,15 +7,17 @@ class AppBarTitle extends StatelessWidget {
     super.key,
   });
 
-  // ignore: prefer_typing_uninitialized_variables
-  final appbarTitleText;
+  final String appbarTitleText;
 
   @override
   Widget build(BuildContext context) {
+    // Get the current theme text color based on theme mode
+    final textColor = Theme.of(context).textTheme.titleLarge?.color;
+
     return Text(
       appbarTitleText,
       style: GoogleFonts.lato(
-        color: Colors.black,
+        color: textColor,
         fontWeight: FontWeight.bold,
         fontSize: 26,
       ),

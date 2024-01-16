@@ -1,4 +1,3 @@
-import 'package:expensetracker/main.dart';
 import 'package:flutter/material.dart';
 
 class CustomBackButton extends StatelessWidget {
@@ -19,15 +18,13 @@ class CustomBackButton extends StatelessWidget {
           child: Container(
             height: 40,
             width: 40,
-            decoration: BoxDecoration(
-              color: kColorScheme.secondaryContainer,
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
             ),
             child: const Center(
               child: Icon(
                 Icons.arrow_back_ios_new_rounded,
                 size: 20,
-                color: Colors.black,
               ),
             ),
           ),

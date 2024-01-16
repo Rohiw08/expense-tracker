@@ -126,6 +126,7 @@ class _NewExpenseState extends State<NewExpense> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  //date selection button
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
@@ -133,8 +134,8 @@ class _NewExpenseState extends State<NewExpense> {
                       ),
                       child: ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          // backgroundColor: Colors.white,
-                          foregroundColor: Colors.black,
+                          backgroundColor: Colors.transparent,
+                          elevation: 0,
                           shape: const BeveledRectangleBorder(),
                           padding:
                               const EdgeInsets.all(16), // Increase button size
@@ -143,9 +144,18 @@ class _NewExpenseState extends State<NewExpense> {
                           _selectedDate == null
                               ? 'Select Date'
                               : _selectedDate.toString().substring(0, 10),
+                          style: TextStyle(
+                              color: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .color),
                         ),
                         onPressed: _selectDate,
-                        icon: const Icon(Icons.date_range_rounded, size: 30),
+                        icon: Icon(
+                          Icons.date_range_rounded,
+                          size: 30,
+                          color: Theme.of(context).textTheme.titleLarge!.color,
+                        ),
                       ),
                     ),
                   ),
@@ -159,10 +169,14 @@ class _NewExpenseState extends State<NewExpense> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(3),
                         border: Border.all(),
+                        color: Colors.transparent,
                       ),
                       child: DropdownButton(
                         iconSize: 30,
-                        icon: const Icon(Icons.arrow_drop_down),
+                        icon: Icon(
+                          Icons.arrow_drop_down,
+                          color: Theme.of(context).textTheme.titleLarge?.color,
+                        ),
                         value: _selectedCategory,
                         items: ItemCategory.values
                             .map(

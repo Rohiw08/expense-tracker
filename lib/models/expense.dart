@@ -28,3 +28,23 @@ class Expense {
   final DateTime dateTime;
   final ItemCategory category;
 }
+
+class ExpenseBucket {
+  ExpenseBucket({required this.category, required this.expenses});
+  final ItemCategory category;
+  final List<Expense> expenses;
+
+  //utility constructor function
+  ExpenseBucket.forCategory(List<Expense> allExpenses, this.category)
+      : expenses = allExpenses
+            .where((expense) => expense.category == category)
+            .toList();
+
+  double get totalExpenses {
+    double sum = 0;
+    for (var expense in expenses) {
+      sum += expense.amount;
+    }
+    return sum;
+  }
+}
