@@ -16,10 +16,12 @@ void main() {
 class ExpenseTrackerApp extends StatefulWidget {
   const ExpenseTrackerApp({super.key});
 
+  // ignore: library_private_types_in_public_api
   static _ExpenseTrackerAppState? of(BuildContext context) =>
       context.findAncestorStateOfType<_ExpenseTrackerAppState>();
 
   @override
+  // ignore: library_private_types_in_public_api
   _ExpenseTrackerAppState createState() => _ExpenseTrackerAppState();
 }
 

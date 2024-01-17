@@ -21,13 +21,6 @@ class _NewExpenseState extends State<NewExpense> {
   DateTime? _selectedDate;
   ItemCategory? _selectedCategory;
 
-  @override
-  void dispose() {
-    _titleController.dispose();
-    _amountController.dispose();
-    super.dispose();
-  }
-
   void _selectDate() async {
     final now = DateTime.now();
     final firstdate = DateTime(now.year - 1, now.month, now.day);
@@ -68,6 +61,7 @@ class _NewExpenseState extends State<NewExpense> {
       );
       return;
     }
+
     final newExpense = Expense(
         amount: enteredAmount,
         title: _titleController.text,
@@ -82,20 +76,29 @@ class _NewExpenseState extends State<NewExpense> {
   }
 
   @override
+  void dispose() {
+    _titleController.dispose();
+    _amountController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const SizedBox(
-          height: 70,
+          height: 55,
         ),
         Row(
           children: [
-            CustomBackButton(close: () {
-              Navigator.of(context).pop();
-            }),
+            CustomBackButton(
+              close: () {
+                Navigator.of(context).pop();
+              },
+            ),
             const SizedBox(
-              width: 80,
+              width: 75,
             ),
             const AppBarTitle(
               appbarTitleText: 'Add Expense',

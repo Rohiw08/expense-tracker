@@ -17,12 +17,18 @@ class ExpensesList extends StatelessWidget {
     return ListView.builder(
         shrinkWrap: true,
         itemCount: expenses.length,
-        itemBuilder: (context, index) => Dismissible(
-              key: ValueKey(expenses[max(0, expenses.length - index - 1)]),
+        itemBuilder: (ctx, index) => Dismissible(
+              key: ValueKey(
+                expenses[index],
+              ),
               onDismissed: (direction) {
-                removeFunction(expenses[max(0, expenses.length - index - 1)]);
+                removeFunction(
+                  expenses[index],
+                );
               },
-              child: ExpenseItem(expenses[max(0, expenses.length - index - 1)]),
+              child: ExpenseItem(
+                expenses[index],
+              ),
             ));
   }
 }
