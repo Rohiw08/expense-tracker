@@ -6,6 +6,7 @@ import 'package:expensetracker/widgets/expenses_list.dart';
 import 'package:expensetracker/screens/new_expense.dart';
 import 'package:expensetracker/widgets/title_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class Expenses extends StatefulWidget {
   const Expenses({Key? key}) : super(key: key);
@@ -79,7 +80,9 @@ class _ExpensesState extends State<Expenses> {
           preferredSize: const Size.fromHeight(90),
           child: AppBar(
             toolbarHeight: 100,
-            leading: const CustomBackButton(),
+            leading: CustomBackButton(close: () {
+              SystemNavigator.pop();
+            }),
             title: const AppBarTitle(appbarTitleText: 'Activity'),
             centerTitle: true,
             elevation: 0,
@@ -113,7 +116,7 @@ class _ExpensesState extends State<Expenses> {
                     borderRadius: BorderRadius.circular(15)),
                 clipBehavior: Clip.antiAlias,
                 child: Container(
-                  height: 350,
+                  height: 330,
                   decoration: BoxDecoration(
                       color: isLightMode
                           ? const Color.fromARGB(255, 247, 226, 234)

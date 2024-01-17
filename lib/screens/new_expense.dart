@@ -89,13 +89,15 @@ class _NewExpenseState extends State<NewExpense> {
         const SizedBox(
           height: 70,
         ),
-        const Row(
+        Row(
           children: [
-            CustomBackButton(),
-            SizedBox(
+            CustomBackButton(close: () {
+              Navigator.of(context).pop();
+            }),
+            const SizedBox(
               width: 80,
             ),
-            AppBarTitle(
+            const AppBarTitle(
               appbarTitleText: 'Add Expense',
             )
           ],

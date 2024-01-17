@@ -37,7 +37,7 @@ class Chart extends StatelessWidget {
         horizontal: 8,
       ),
       width: double.infinity,
-      height: 180,
+      height: 120, // Adjust the height as needed
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
       ),
@@ -47,7 +47,7 @@ class Chart extends StatelessWidget {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                for (final bucket in buckets) // alternative to map()
+                for (final bucket in buckets)
                   ChartBar(
                     fill: bucket.totalExpenses == 0
                         ? 0
@@ -63,15 +63,10 @@ class Chart extends StatelessWidget {
                   (bucket) => Expanded(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4),
-                      child: Icon(ItemCategoryIcons[bucket.category],
-                          color: Theme.of(context).textTheme.titleLarge?.color
-                          // isDarkMode
-                          //     ? Theme.of(context).colorScheme.secondary
-                          //     : Theme.of(context)
-                          //         .colorScheme
-                          //         .primary
-                          //         .withOpacity(0.7),
-                          ),
+                      child: Icon(
+                        ItemCategoryIcons[bucket.category],
+                        color: Theme.of(context).textTheme.titleLarge?.color,
+                      ),
                     ),
                   ),
                 )

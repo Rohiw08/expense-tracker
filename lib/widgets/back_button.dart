@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CustomBackButton extends StatelessWidget {
-  const CustomBackButton({Key? key}) : super(key: key);
+  const CustomBackButton({Key? key, required this.close}) : super(key: key);
+
+  final void Function() close;
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +14,7 @@ class CustomBackButton extends StatelessWidget {
         shape: const CircleBorder(),
         clipBehavior: Clip.antiAlias,
         child: GestureDetector(
-          onTap: () {
-            Navigator.of(context).pop();
-          },
+          onTap: close,
           child: Container(
             height: 40,
             width: 40,
