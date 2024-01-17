@@ -98,7 +98,7 @@ class _NewExpenseState extends State<NewExpense> {
               },
             ),
             const SizedBox(
-              width: 75,
+              width: 55,
             ),
             const AppBarTitle(
               appbarTitleText: 'Add Expense',

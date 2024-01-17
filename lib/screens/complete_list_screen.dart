@@ -27,7 +27,7 @@ class ExpensesListPage extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const SizedBox(width: 75),
+              const SizedBox(width: 55),
               const AppBarTitle(appbarTitleText: 'Expenses list'),
             ],
           ),

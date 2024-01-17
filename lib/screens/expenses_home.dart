@@ -32,10 +32,6 @@ class _ExpensesState extends State<Expenses> {
     );
   }
 
-  Widget mainContent = const Center(
-    child: Text('No expense found. Start Adding some'),
-  );
-
   void _addExpense(Expense expense) {
     setState(() {
       _registeredExpenses.add(expense);
@@ -76,12 +72,18 @@ class _ExpensesState extends State<Expenses> {
     );
   }
 
+  Widget? mainContent;
+
   @override
   Widget build(BuildContext context) {
     if (_registeredExpenses.isNotEmpty) {
       mainContent = ExpensesList(
         expenses: _registeredExpenses,
         removeFunction: _removeExpense,
+      );
+    } else {
+      mainContent = const Center(
+        child: Text('No expense found. Start Adding some'),
       );
     }
 
@@ -173,10 +175,7 @@ class _ExpensesState extends State<Expenses> {
                 ),
               ],
             ),
-            mainContent = ExpensesList(
-              expenses: _registeredExpenses,
-              removeFunction: _removeExpense,
-            ),
+            Expanded(child: mainContent!),
           ],
         ),
         floatingActionButton: Padding(
