@@ -2,6 +2,39 @@ import 'package:expensetracker/models/expense.dart';
 import 'package:expensetracker/widgets/charts/chart_bar.dart';
 import 'package:flutter/material.dart';
 
+class ChartSection extends StatelessWidget {
+  const ChartSection({
+    super.key,
+    required this.colorOfContainer,
+    required List<Expense> registeredExpenses,
+  }) : _registeredExpenses = registeredExpenses;
+
+  final Color colorOfContainer;
+  final List<Expense> _registeredExpenses;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(18.0),
+      child: Material(
+        elevation: 3,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        clipBehavior: Clip.antiAlias,
+        child: Container(
+          height: double.maxFinite,
+          decoration: BoxDecoration(
+            color: colorOfContainer,
+            borderRadius: BorderRadius.circular(20),
+          ),
+          child: Chart(expenses: _registeredExpenses),
+        ),
+      ),
+    );
+  }
+}
+
 class Chart extends StatelessWidget {
   const Chart({super.key, required this.expenses});
 

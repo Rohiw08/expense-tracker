@@ -55,7 +55,7 @@ class _ExpenseTrackerAppState extends State<ExpenseTrackerApp> {
       ),
       themeMode: _themeMode,
       debugShowCheckedModeBanner: false,
-      home: const Expenses(),
+      home: const HomeScreen(),
     );
   }
 }

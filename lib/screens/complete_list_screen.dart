@@ -17,25 +17,24 @@ class ExpensesListPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const SizedBox(height: 55),
-          Row(
-            children: [
-              CustomBackButton(
-                close: () {
-                  Navigator.of(context).pop();
-                },
-              ),
-              const SizedBox(width: 55),
-              const AppBarTitle(appbarTitleText: 'Expenses list'),
-            ],
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(90),
+        child: AppBar(
+          toolbarHeight: 100,
+          leading: CustomBackButton(
+            close: () {
+              Navigator.of(context).pop();
+            },
           ),
-          ExpensesList(
-            expenses: expenseslist,
-            removeFunction: newRemoveFunction, // Use the newRemoveFunction here
-          ),
-        ],
+          title: const AppBarTitle(appbarTitleText: 'Expenses list'),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+        ),
+      ),
+      body: ExpensesList(
+        expenses: expenseslist,
+        removeFunction: newRemoveFunction, // Use the newRemoveFunction here
       ),
     );
   }
